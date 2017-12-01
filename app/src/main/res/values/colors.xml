@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--theme-->
+    <color name="colorPrimary">#f9f9f9</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#2cc8f4</color>
+    <color name="colorSpacing">#f6f6f3</color>
+    <color name="colorDivider">#e4e7eb</color>
+    <color name="colorWindow">#ffffff</color>
+
+    <!--base-->
+    <color name="colorBaseWhite">#ffffff</color>
+    <color name="bg_base_main">#ffffff</color>
+    <color name="base_main_divider">#d8d8d8</color>
+    <color name="base_list_pressed">#30000000</color>
+    <color name="base_list_unable">#30000000</color>
+    <color name="ripple_color">#30000000</color>
+    <color name="base_orange">#ff9800</color>
+
+    <!--tc-->
+    <color name="tc_normal">#202020</color>
+    <color name="tc_grey">#8f8f8f</color>
+</resources>
