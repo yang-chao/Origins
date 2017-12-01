@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.facebook.drawee.view.SimpleDraweeView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/sd_progressbar"
-    android:layout_width="56dp"
-    android:layout_height="92dp"
-    android:layout_gravity="center" />
