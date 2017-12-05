@@ -34,3 +34,5 @@ local.properties
 *.ap_
 
 # GreenDao auto-gen files
+/app/
+app/libs/
