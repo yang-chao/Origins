@@ -1,6 +1,68 @@
 <resources>
     <string name="app_name">Origins</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <!--common-->
+    <string name="done">完成</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="save">保存</string>
+    <string name="send">发送</string>
+    <string name="reply">回复</string>
+    <string name="delete">删除</string>
+    <string name="retry">重试</string>
+    <string name="close">关闭</string>
+    <string name="edit">编辑</string>
+    <string name="login">登录</string>
+    <string name="back">返回</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="cancel_succeed">取消成功</string>
+    <string name="delete_success">删除成功</string>
+    <string name="more">更多</string>
+    <string name="no_more">没有更多了</string>
+    <string name="jump">跳过</string>
+
+    <!--util-->
+    <string name="day_ago">%d天前</string>
+    <string name="hour_ago">%d小时前</string>
+    <string name="min_ago">%d分钟前</string>
+    <string name="one_min_ago">1分钟前</string>
+    <string name="save_to">已保存到%s</string>
+    <string name="image_decode_failed">图片加载失败</string>
+    <string name="update_downloader_unable">请先启用系统下载管理程序</string>
+
+    <!--permission-->
+    <string name="permission_tip">请到设置-应用-另辟蹊径-权限中打开相应权限</string>
+    <string name="permission_tip_camera">相机不可用，请检查权限</string>
+
+    <!--empty-->
+    <string name="net_err">网络不给力</string>
+    <string name="err_net">网络不给力</string>
+    <string name="err_retry">点击屏幕 重新加载</string>
+    <string name="empty_data">暂无数据</string>
+
+    <!--widget-->
+    <string name="pull_refresh">下拉刷新</string>
+
+    <!--menu-->
+    <string name="menu_photo_picker">完成</string>
+    <string name="menu_share">分享</string>
+    <string name="menu_send">发送</string>
+
+    <!--share-->
+    <string name="share_wx">微信</string>
+    <string name="share_wx_circle">朋友圈</string>
+    <string name="share_weibo">新浪微博</string>
+    <string name="share_qq">QQ</string>
+    <string name="share_qzone">QQ空间</string>
+    <string name="share_copy">复制链接</string>
+    <string name="share_copy_success">复制成功</string>
+    <string name="share_success">分享成功</string>
+    <string name="share_failed">分享失败</string>
+    <string name="share_canceled">分享取消</string>
+
+    <!--图片上传-->
+    <string name="fragment_publish_photo_confirm">上传图片%1$d/%2$d</string>
+    <string name="toast_select_image_none">未选择图片</string>
+    <string name="tip_max_count">最多选择%d张图片</string>
+    <string name="photo_picker_menu">完成 (%1$d/%2$d)</string>
 </resources>
