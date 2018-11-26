@@ -6,8 +6,7 @@ import com.assassin.origins.ui.base.BaseActivity
 
 class MainActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.ac_main)
+    override fun getLayout(): Int {
+        return R.layout.ac_main
     }
 }
