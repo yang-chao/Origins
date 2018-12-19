@@ -1,0 +1,9 @@
+ext {
+    dependencies = [
+            'appcompat'       : 'androidx.appcompat:appcompat:1.1.0-alpha01',
+            'constraintlayout': 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2',
+            'recyclerview'    : 'androidx.recyclerview:recyclerview:1.0.0-rc01',
+            'rxjava'          : 'io.reactivex.rxjava2:rxjava:2.2.2',
+            'rxandroid'       : 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    ]
+}
