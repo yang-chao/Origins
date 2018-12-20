@@ -12,11 +12,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
         multiDexEnabled true
-        dataBinding {
-            enabled = true
-        }
     }
     buildTypes {
         release {
@@ -45,9 +41,9 @@ dependencies {
     implementation rootProject.ext.dependencies['recyclerview']
 
     // Image
-    api 'com.github.bumptech.glide:glide:4.8.0'
-    kapt 'com.github.bumptech.glide:compiler:4.8.0'
+    implementation rootProject.ext.dependencies['glide']
+    kapt rootProject.ext.dependencies['glide-compiler']
 
-    implementation rootProject.ext.dependencies['rxjava']
-    implementation rootProject.ext.dependencies['rxandroid']
+    api rootProject.ext.dependencies['rxjava']
+    api rootProject.ext.dependencies['rxandroid']
 }

@@ -23,27 +23,36 @@ class UIController constructor(private val context: AppCompatActivity, layoutId:
     }
 
     override fun showLoading() {
-        loadingProgressBar?.show()
+        if (loadingProgressBar != null && !loadingProgressBar!!.isShowing) {
+            loadingProgressBar?.show()
+        }
+        rootView.visibility = View.VISIBLE
         errorView.visibility = View.GONE
         emptyView.visibility = View.GONE
     }
 
     override fun showContent() {
-        loadingProgressBar?.dismiss()
+        if (loadingProgressBar != null && loadingProgressBar!!.isShowing) {
+            loadingProgressBar!!.dismiss()
+        }
         rootView.visibility = View.GONE
         errorView.visibility = View.GONE
         emptyView.visibility = View.GONE
     }
 
     override fun showError() {
-        loadingProgressBar?.dismiss()
+        if (loadingProgressBar != null && loadingProgressBar!!.isShowing) {
+            loadingProgressBar!!.dismiss()
+        }
         rootView.visibility = View.VISIBLE
         errorView.visibility = View.VISIBLE
         emptyView.visibility = View.GONE
     }
 
     override fun showEmpty() {
-        loadingProgressBar?.dismiss()
+        if (loadingProgressBar != null && loadingProgressBar!!.isShowing) {
+            loadingProgressBar!!.dismiss()
+        }
         rootView.visibility = View.VISIBLE
         emptyView.visibility = View.VISIBLE
         errorView.visibility = View.GONE

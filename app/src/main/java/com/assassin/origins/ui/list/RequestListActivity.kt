@@ -5,16 +5,16 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.assassin.origins.R
-import com.assassin.origins.core.viewmodel.DataViewModel
+import com.assassin.origins.core.viewmodel.ListDataViewModel
 import com.assassin.origins.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.ac_request_list.*
 
 abstract class RequestListActivity<T> : BaseActivity() {
 
-    private var mViewModel: DataViewModel<T>? = null
+    private var mViewModel: ListDataViewModel<T>? = null
     private var mAdapter: DataListAdapter<T>? = null
 
-    protected fun getViewModel(): DataViewModel<T>? {
+    protected fun getViewModel(): ListDataViewModel<T>? {
         return mViewModel
     }
 
@@ -22,12 +22,19 @@ abstract class RequestListActivity<T> : BaseActivity() {
         return R.layout.ac_request_list
     }
 
-    protected abstract fun createViewModel(): DataViewModel<T>
+    protected abstract fun createViewModel(): ListDataViewModel<T>
 
     protected abstract fun createViewBinder(): ViewBinder<T>
 
-    protected fun onDataChanged(t: List<T>) {
-        mAdapter?.updateData(t)
+    protected fun onDataChanged(list: List<T>?) {
+        when {
+            list == null -> showError()
+            list.isEmpty() -> showEmpty()
+            else -> {
+                mAdapter?.updateData(list)
+                showContent()
+            }
+        }
     }
 
     protected fun createLayoutManager(): RecyclerView.LayoutManager {
@@ -36,6 +43,8 @@ abstract class RequestListActivity<T> : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // start load data from net/local data storage
+        showLoading()
         with(recycler_view) {
             layoutManager = createLayoutManager()
             mAdapter = DataListAdapter<T>().setViewBinder(createViewBinder())

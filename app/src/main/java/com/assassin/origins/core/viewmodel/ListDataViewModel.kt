@@ -5,11 +5,11 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
-abstract class DataViewModel<T>(application: Application) : AndroidViewModel(application) {
+abstract class ListDataViewModel<T>(application: Application) : AndroidViewModel(application) {
 
-    protected var data: MutableLiveData<T> = MutableLiveData()
+    protected var data: MutableLiveData<List<T>> = MutableLiveData()
 
-    fun getData(): LiveData<T> {
+    fun getData(): LiveData<List<T>> {
         return data
     }
 

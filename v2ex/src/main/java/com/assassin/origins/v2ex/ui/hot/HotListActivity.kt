@@ -6,25 +6,20 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.assassin.origins.core.viewmodel.DataViewModel
+import com.assassin.origins.core.viewmodel.ListDataViewModel
+import com.assassin.origins.ui.base.BaseApplication
 import com.assassin.origins.ui.list.RequestListActivity
 import com.assassin.origins.ui.list.ViewBinder
 import com.assassin.origins.v2ex.R
 import com.assassin.origins.v2ex.api.model.Topic
-import com.assassin.origins.v2ex.core.ApiServiceManager
+import com.assassin.origins.v2ex.core.viewmodel.TopicViewModel
 import com.assassin.origins.v2ex.databinding.AdapterTopicBinding
 import com.bumptech.glide.Glide
 
 class HotListActivity : RequestListActivity<Topic>() {
 
-    override fun createViewModel(): DataViewModel<Topic> {
-        return object : DataViewModel<Topic>() {
-            override fun loadData() {
-                // 加载数据
-                ApiServiceManager.instance.getApiService().getHostList()
-            }
-
-        }
+    override fun createViewModel(): ListDataViewModel<Topic> {
+        return TopicViewModel(BaseApplication.instance)
     }
 
     override fun createViewBinder(): ViewBinder<Topic> {
@@ -45,7 +40,7 @@ class HotListActivity : RequestListActivity<Topic>() {
         override fun bindView(holder: RecyclerView.ViewHolder, data: Topic, position: Int) {
             val topicHolder: TopicHolder = holder as TopicHolder
             Glide.with(context)
-                .load("http:${data.member.avatarNormal}")
+                .load("http:${data.member.avatarNormal.replace("_mini", "_large")}")
                 .into(topicHolder.avatarView)
             topicHolder.dataBinding.topic = data
             topicHolder.dataBinding.executePendingBindings()
