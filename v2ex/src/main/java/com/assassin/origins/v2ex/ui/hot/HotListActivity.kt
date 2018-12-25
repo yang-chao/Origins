@@ -8,8 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.assassin.origins.core.viewmodel.ListDataViewModel
 import com.assassin.origins.ui.base.BaseApplication
-import com.assassin.origins.ui.list.RequestListActivity
-import com.assassin.origins.ui.list.ViewBinder
+import com.assassin.origins.ui.request.list.RequestListActivity
+import com.assassin.origins.ui.request.list.ViewBinder
 import com.assassin.origins.v2ex.R
 import com.assassin.origins.v2ex.api.model.Topic
 import com.assassin.origins.v2ex.core.viewmodel.TopicViewModel

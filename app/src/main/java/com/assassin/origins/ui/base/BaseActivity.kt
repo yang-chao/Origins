@@ -1,6 +1,7 @@
 package com.assassin.origins.ui.base
 
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.assassin.origins.R
@@ -14,13 +15,22 @@ abstract class BaseActivity : AppCompatActivity(), UIAction {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val w = window // in Activity's onCreate() for instance
+        w.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
+
         setContentView(R.layout.ac_base)
 
         mUIController = UIController(this, R.layout.base_ui_controller)
 
         val contentView = layoutInflater.inflate(getLayout(), null)
-        val param = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.MATCH_PARENT)
+        val param = FrameLayout.LayoutParams(
+            FrameLayout.LayoutParams.MATCH_PARENT,
+            FrameLayout.LayoutParams.MATCH_PARENT
+        )
         root.addView(contentView, param)
         root.addView(mUIController?.rootView)
     }

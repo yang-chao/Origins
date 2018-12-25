@@ -1,4 +1,4 @@
-package com.assassin.origins.ui.list
+package com.assassin.origins.ui.request.list
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
