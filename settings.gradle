@@ -1,1 +1,1 @@
-include ':app', ':v2ex', ':http'
+include ':app', ':v2ex', ':http', ':splash'
