@@ -1,52 +1,62 @@
 package com.assassin.origins.splash.ui
 
 import android.os.Bundle
-import androidx.core.view.LayoutInflaterCompat
-import com.assassin.origins.core.viewmodel.DataViewModel
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentPagerAdapter
 import com.assassin.origins.splash.R
-import com.assassin.origins.splash.api.model.Photo
-import com.assassin.origins.splash.core.GlideApp
-import com.assassin.origins.splash.core.viewmodel.PhotoViewModel
-import com.assassin.origins.ui.request.RequestActivity
-import com.mikepenz.iconics.context.IconicsLayoutInflater2
 import kotlinx.android.synthetic.main.ac_main.*
-import android.view.WindowManager
-import android.os.Build
 
+class MainActivity : AppCompatActivity() {
 
-
-class MainActivity : RequestActivity<Photo>() {
-
-    override fun createViewModel(): DataViewModel<Photo> {
-        return PhotoViewModel(application)
-    }
-
-    override fun getLayout(): Int {
-        return R.layout.ac_main
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> {
+                drawer_layout.openDrawer(GravityCompat.START)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        LayoutInflaterCompat.setFactory2(layoutInflater, IconicsLayoutInflater2(delegate))
         super.onCreate(savedInstanceState)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        setContentView(R.layout.ac_main)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_black)
+        setTitle(R.string.navigation_featured)
 
+        view_pager.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
+
+            override fun getCount(): Int {
+                return 2
+            }
+
+            override fun getPageTitle(position: Int): CharSequence? {
+                return if (position == 0) {
+                    getString(R.string.navigation_featured)
+                } else {
+                    "Test"
+                }
+            }
+
+            override fun getItem(position: Int): Fragment {
+                return Fragment()
+            }
         }
-    }
+        tab_layout.setupWithViewPager(view_pager)
 
-    override fun onDataChanged(data: Photo?) {
-        super.onDataChanged(data)
-
-        if (data == null) {
-            return
+        navigation.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.featured -> setTitle(R.string.navigation_featured)
+                else -> title = "OOO"
+            }
+            drawer_layout.closeDrawers()
+            return@setNavigationItemSelectedListener true
         }
-        GlideApp.with(this)
-            .load(data.urls.regular)
-            .centerCrop()
-            .into(image)
-        GlideApp.with(this)
-            .load(data.user.profileImage.medium)
-            .circleCrop()
-            .into(author_avatar)
-        author_name.text = data.user.username
     }
 }
